@@ -10,5 +10,14 @@
     ],
     "require": {
 
-    }
+    },
+    "autoload": {
+      "psr-0": {
+        "WPAmin\\": [
+          "lib/",
+          "helpers/",
+          "views/"
+        ]
+      }
+                                                                }
 }
