@@ -33,7 +33,7 @@ function wpamin_load_scripts($hook) {
 		return;
   }
 
-  wp_enqueue_style( 'wpamin-style', 'app/styles/wordpress-angular-admin.css');
+  wp_enqueue_style( 'wpamin-style', plugin_dir_url(__FILE__) . 'app/styles/wordpress-angular-admin.css');
 
 	wp_enqueue_script('angular', plugin_dir_url(__FILE__) . 'app/components/angular/angular.js', array('jquery'));
 	wp_enqueue_script('angular-resource', plugin_dir_url(__FILE__) . 'app/components/angular-resource/angular-resource.js', array('jquery', 'angular'));
@@ -42,7 +42,7 @@ function wpamin_load_scripts($hook) {
     wp_enqueue_script('wpamin-' . $handle, plugin_dir_url(__FILE__) . $path, array('jquery', 'angular', 'angular-resource'));
   }
 
-	wp_localize_script('wpamin-globals', 'wpamin_vars', array(
+	wp_localize_script('wpamin-app', 'wpamin_vars', array(
 			'nonce' => wp_create_nonce('wpamin-nonce'),
       'url' => plugin_dir_url(__FILE__),
 		)
