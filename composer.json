@@ -1,0 +1,14 @@
+{
+    "name": "mtomcal/wordpress-angular-admin",
+    "description": "A boilerplate for Angular driven Wordpress settings pages",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael A Tomcal",
+            "email": "michael@twoeyetech.com"
+        }
+    ],
+    "require": {
+
+    }
+}
