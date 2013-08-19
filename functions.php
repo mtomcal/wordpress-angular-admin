@@ -27,6 +27,7 @@ function wpamin_load_scripts($hook) {
   $app = array(
     "app" => 'app/scripts/app.js',
     "mainctrl" => 'app/scripts/controllers/main.js',
+    "process" => 'app/scripts/services/wpamin_process.js',
   );
 	
 	if( $hook != $wpamin_settings ) {
@@ -52,13 +53,17 @@ function wpamin_load_scripts($hook) {
 add_action('admin_enqueue_scripts', 'wpamin_load_scripts');
 
 function wpamin_process_ajax() {
+  
 
-  if( !isset( $_POST['wpamin_nonce'] ) || !wp_verify_nonce($_POST['wpamin_nonce'], 'wpamin-nonce') ) {
-    die('Permissions check failed');	
+  if( !isset( $_GET['wpamin_nonce'] ) && !isset( $_POST['wpamin_nonce'] ) || !wp_verify_nonce($_POST['wpamin_nonce'], 'wpamin-nonce') && !wp_verify_nonce($_GET['wpamin_nonce'], 'wpamin-nonce')) {
+    die('0');
   }
+
+  $response =  json_encode(array("Message" => "This ajax works"));
+  echo $response;
 	
 	die();
 }
-add_action('wp_ajax_wpamin_process', 'wpamin_process_ajax');
+add_action('wp_ajax_wpamin-process', 'wpamin_process_ajax');
 
 ?>
